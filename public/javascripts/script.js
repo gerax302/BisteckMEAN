@@ -1,9 +1,18 @@
 var aplicacion = angular.module('aplicacion', []);
+
+//
+aplicacion.controller('categoriaController', ['$scope', function($scope) {
+      $scope.color = {
+        name: 'blue'
+      };
+    }]);
+//
+
 aplicacion.controller('Clientes', function($scope, $http) {
     $scope._id = null;
     $scope.nombre = '';
     $scope.apellido = ''
-    $scope.domicilio = '';
+    //$scope.domicilio = '';
     $scope.telefono = '';
     $scope.email = '';
     $scope.clientes = [];
@@ -29,7 +38,7 @@ aplicacion.controller('Clientes', function($scope, $http) {
             params: {
                 nombre: $scope.nombre,
                 apellido: $scope.apellido,
-                domicilio: $scope.domicilio,
+                //domicilio: $scope.domicilio,
                 telefono: $scope.telefono,
                 email: $scope.email,
                 _id: $scope._id
@@ -60,7 +69,7 @@ aplicacion.controller('Clientes', function($scope, $http) {
                 $scope._id = data._id;
                 $scope.nombre = data.nombre;
                 $scope.apellido = data.apellido;
-                $scope.domicilio = data.domicilio;
+                //$scope.domicilio = data.domicilio;
                 $scope.telefono = data.telefono;
                 $scope.email = data.email;
             }else{
@@ -95,7 +104,7 @@ aplicacion.controller('Clientes', function($scope, $http) {
         $scope._id = null;
         $scope.nombre = '';
         $scope.apellido = '';
-        $scope.domicilio = '';
+        //$scope.domicilio = '';
         $scope.telefono = '';
         $scope.email = '';
     };

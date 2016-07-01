@@ -1,14 +1,7 @@
-
-/**
- * Module dependencies.
- */
-
+//Module dependencies.
 var express = require('express');
-//var routes = require('./routes');
-//var user = require('./routes/user');
 var http = require('http');
 var path = require('path');
-
 var app = express();
 
 // all environments
@@ -42,7 +35,7 @@ mongoose.connect('mongodb://localhost/primer_base', function(error){
 var ClienteSchema = mongoose.Schema({
 	nombre: String,
     apellido: String,
-    domicilio: String,
+    //domicilio: String,
     telefono: String,
     email: String
 });
@@ -51,6 +44,7 @@ var Cliente = mongoose.model('Cliente', ClienteSchema);
 app.get('/', function(req, res){
 	res.sendfile('./public/index.html');
 });
+
 
 app.get('/listar', function(req, res){
 	Cliente.find({}, function(error, clientes){
@@ -78,7 +72,7 @@ app.post('/guardar', function(req, res){
 		var cliente = new Cliente({
 		   nombre: req.query.nombre,
 		   apellido: req.query.apellido,
-		   domicilio: req.query.domicilio,
+		   //domicilio: req.query.domicilio,
 		   telefono: req.query.telefono,
 		   email: req.query.email
 		});
@@ -98,7 +92,7 @@ app.post('/guardar', function(req, res){
 				var cliente = documento;
 				cliente.nombre = req.query.nombre,
 			   	cliente.apellido = req.query.apellido,
-			   	cliente.domicilio = req.query.domicilio,
+			   	//cliente.domicilio = req.query.domicilio,
 			   	cliente.telefono = req.query.telefono,
 			   	cliente.email = req.query.email
 				cliente.save(function(error, documento){
@@ -121,8 +115,10 @@ app.post('/eliminar', function(req, res){
 			res.send('Ok');
 		}
    });
-});
+}); 
 
+
+//Creando e iniciando el server
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
 });
